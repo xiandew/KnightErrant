@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NewBehaviourScript : MonoBehaviour
+// Ref: https://www.youtube.com/watch?v=RXB7wKSoupI
+public class NPCController : MonoBehaviour
 {
     public NavMeshAgent navMeshAgent;
-    public float timerForNewPath;
+    public float timeForNewPath;
     private bool inCoRoutine;
+    private GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
-        navMeshAgent = this.gameObject.GetComponent<NavMeshAgent>();   
+        navMeshAgent = this.gameObject.GetComponent<NavMeshAgent>();
+        player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
@@ -23,22 +26,14 @@ public class NewBehaviourScript : MonoBehaviour
         }
     }
 
-    Vector3 GetNewRandomPosition() {
-        float x = Random.Range(-20, 20);
-        float z = Random.Range(-20, 20);
-
-        Vector3 pos = new Vector3(x, 0, z);
-        return pos;
-    }
-
     IEnumerator DoSomething() {
         inCoRoutine = true;
-        yield return new WaitForSeconds(timerForNewPath);
+        yield return new WaitForSeconds(timeForNewPath);
         GetNewPath();
         inCoRoutine = false;
     }
 
     void GetNewPath() {
-        navMeshAgent.SetDestination(this.GetNewRandomPosition());
+        navMeshAgent.SetDestination(player.transform.position);
     }
 }
