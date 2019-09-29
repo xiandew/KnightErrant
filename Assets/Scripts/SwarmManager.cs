@@ -31,14 +31,14 @@ public class SwarmManager : MonoBehaviour {
     // Method to automatically generate swarm of enemies based on the set public attributes
     public void GenerateSwarm()
     {
-        Bounds landBounds = land.terrainData.bounds;
-        float y = landBounds.size.y / 2 + land.transform.localPosition.y;
+        Vector3 min = land.terrainData.bounds.min;
+        Vector3 max = land.terrainData.bounds.max;
         // Create swarm of enemies in a grid formation
         for (int i = 0; i < enemyNum; i++)
         {
                 GameObject enemy = GameObject.Instantiate<GameObject>(enemyTemplate);
-                float x = Random.Range(land.terrainData.size.x, land.transform.position.x + land.terrainData.size.x);
-                float z = Random.Range(land.transform.position.z, land.transform.position.z + land.terrainData.size.z);
+                float x = Random.Range(min.x, max.x);
+                float z = Random.Range(min.z, max.z);
 
                 enemy.transform.parent = this.transform;
                 enemy.transform.position = new Vector3(x, Terrain.activeTerrain.SampleHeight(new Vector3(x, 0, z)), z);
