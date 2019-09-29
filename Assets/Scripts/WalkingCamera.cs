@@ -9,7 +9,7 @@ using UnityEngine;
 public class WalkingCamera : MonoBehaviour
 {
 
-    public Animation animation;
+    public Animation anim;
     private bool isMoving;
 
     private bool left;
@@ -42,15 +42,15 @@ public class WalkingCamera : MonoBehaviour
     void WalkingAnimation() {
         if (isMoving == true) {
             if (left == true) {
-                if (!animation.isPlaying) {
-                    animation.Play("walkLeft");
+                if (!anim.isPlaying) {
+                    anim.Play("walkLeft");
                     left = false;
                     right = true;
                 }
             }
             if (right == true) {
-                if (!animation.isPlaying) {
-                    animation.Play("walkRight");
+                if (!anim.isPlaying) {
+                    anim.Play("walkRight");
                     left = true;
                     right = false;
                 }
