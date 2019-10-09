@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
 {
     public float speed;
     public float sensitivity;
-
     private float yaw = 45.0f;
     private float pitch = 0.0f;
 
