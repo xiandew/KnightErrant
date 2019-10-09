@@ -1,6 +1,8 @@
 ﻿/*  This module is used to model the walking camera navigation matephor, where
     the camera will tilt left and right to add more realism to the player's
     movement.
+    This module's implementation is based on a YouTube video:
+    https://www.youtube.com/watch?v=zM6L5WJOsWg
  */
 using System.Collections;
 using System.Collections.Generic;

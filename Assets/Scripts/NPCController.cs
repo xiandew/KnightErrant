@@ -6,6 +6,7 @@ using UnityEngine.AI;
 // Ref: https://www.youtube.com/watch?v=RXB7wKSoupI
 public class NPCController : MonoBehaviour
 {
+    public float safeDistance;
     public NavMeshAgent navMeshAgent;
     public float timeForNewPath;
     private bool inCoRoutine;
@@ -21,8 +22,10 @@ public class NPCController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!inCoRoutine) {
-            StartCoroutine(DoSomething());
+        if (Vector3.Distance(transform.position, player.transform.position) <= safeDistance) {
+            if (!inCoRoutine) {
+                StartCoroutine(DoSomething());
+            }
         }
     }
 
