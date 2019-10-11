@@ -4,16 +4,18 @@ using System.Collections.Generic;
 
 public class ProjectileController : MonoBehaviour {
 
-    public Vector3 velocity;
-
+    Rigidbody projectileBody;
     public float fireRange;
-
     public int damageAmount = 50;
     public string tagToDamage;
 
+    void Start() {
+        projectileBody = GetComponent<Rigidbody>();
+    }
+
     // Update is called once per frame
     void Update () {
-        this.transform.Translate(velocity * Time.deltaTime);
+        this.transform.rotation = Quaternion.LookRotation(projectileBody.velocity);
 	}
 
     // Handle collisions
