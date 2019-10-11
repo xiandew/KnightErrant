@@ -1,26 +1,25 @@
 using UnityEngine;
-using System.Collections;
 
 public class RangedWeaponController : MonoBehaviour {
 
     public ProjectileController projectilePrefab;
-
-    void Start() {
-
-    }
+    public Camera playerCam;
+    public Transform arrowSpwan;
+    public float shootForce;
 
     void Update() {
         // Fire the projectile when the left of the mouse is clicked
-        if (Input.GetMouseButtonDown(0)) {
-
-            // Get the mouse position on screen
-            Vector2 mouseScreenPos = Input.mousePosition;
-
-            // Create the projectile
-            ProjectileController projectile = Instantiate<ProjectileController>(projectilePrefab);
-            projectile.transform.position = this.transform.position;
+        if (Input.GetButtonDown("Fire1")) {
+            
+            Shoot();
 
         }
+    }
+
+    void Shoot() {
+        ProjectileController projectile = Instantiate<ProjectileController>(projectilePrefab, arrowSpwan.position, projectilePrefab.transform.rotation);
+        Rigidbody rb = projectile.GetComponent<Rigidbody>();
+        rb.velocity = playerCam.transform.forward * shootForce;
     }
 
 }
