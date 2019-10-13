@@ -8,6 +8,7 @@ public class NPCController : MonoBehaviour
     public float safeDistance;
     public RuntimeAnimatorController runController;
     public RuntimeAnimatorController walkController;
+    public NPCWeaponController npcWeaponController;
     public NavMeshAgent navMeshAgent;
     public float maxTimeForNewPath;
     private bool inCoRoutine;
@@ -29,22 +30,31 @@ public class NPCController : MonoBehaviour
             navMeshAgent.speed = 5f;
             animator.runtimeAnimatorController = runController;
             if (!inCoRoutine) {
-                StartCoroutine(move(player.transform.position));
+                StartCoroutine(runAndAttack());
             }
         } else {
             // wander
             navMeshAgent.speed = 2f;
             animator.runtimeAnimatorController = walkController;
             if (!inCoRoutine) {
-                StartCoroutine(move(getRandomPosition()));
+                StartCoroutine(wander());
             }
         }
     }
 
-    private IEnumerator move(Vector3 dest) {
+    private IEnumerator runAndAttack() {
         inCoRoutine = true;
         yield return new WaitForSeconds(Random.Range(2, maxTimeForNewPath));
-        navMeshAgent.SetDestination(dest);
+        gameObject.transform.LookAt(player.transform);
+        npcWeaponController.Shoot(player.transform.position);
+        navMeshAgent.SetDestination(player.transform.position);
+        inCoRoutine = false;
+    }
+
+    private IEnumerator wander() {
+        inCoRoutine = true;
+        yield return new WaitForSeconds(Random.Range(2, maxTimeForNewPath));
+        navMeshAgent.SetDestination(getRandomPosition());
         inCoRoutine = false;
     }
 
@@ -52,8 +62,7 @@ public class NPCController : MonoBehaviour
         return transform.position + new Vector3(Random.Range(-30, 30), 0, Random.Range(-30, 30));
     }
 
-    void die() {
-        transform.Rotate(90, 0, 0);
+    public void Die() {
         Destroy(this.gameObject);
     }
 }
