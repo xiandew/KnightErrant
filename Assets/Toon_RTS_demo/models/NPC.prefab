@@ -891,7 +891,7 @@ GameObject:
   - component: {fileID: 156677122078691081}
   m_Layer: 0
   m_Name: NPC
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -975,6 +975,7 @@ MonoBehaviour:
   safeDistance: 50
   runController: {fileID: 9100000, guid: ab90de9bb203e894aa2e319047947eab, type: 2}
   walkController: {fileID: 9100000, guid: 050ca9fda18216541bddaea5e841ce07, type: 2}
+  npcWeaponController: {fileID: -7638399477172799057}
   navMeshAgent: {fileID: 849755651004184858}
   maxTimeForNewPath: 5
 --- !u!195 &849755651004184858
@@ -1013,9 +1014,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: -6411899549933469579, guid: 3dfea37f6cf926b4cacb225a9b0c6dd2,
     type: 3}
-  npc: {fileID: 4867382718333921279}
-  arrowSpwan: {fileID: 0}
-  shootForce: 15
+  shootForce: 20
 --- !u!114 &156677122078691081
 MonoBehaviour:
   m_ObjectHideFlags: 0
