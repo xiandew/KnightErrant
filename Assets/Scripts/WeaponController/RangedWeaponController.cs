@@ -17,7 +17,7 @@ public class RangedWeaponController : MonoBehaviour {
     }
 
     void Shoot() {
-        ProjectileController projectile = Instantiate<ProjectileController>(projectilePrefab, arrowSpwan.position, projectilePrefab.transform.rotation);
+        ProjectileController projectile = Instantiate(projectilePrefab, arrowSpwan.position, Quaternion.identity);
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         rb.velocity = playerCam.transform.forward * shootForce;
     }
