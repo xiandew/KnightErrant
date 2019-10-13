@@ -970,8 +970,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74ebfdb4a60e6c741b439eab191a3f6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  safeDistance: 50
   navMeshAgent: {fileID: 849755651004184858}
-  player: {fileID: 0}
   timeForNewPath: 1
 --- !u!195 &849755651004184858
 NavMeshAgent:
