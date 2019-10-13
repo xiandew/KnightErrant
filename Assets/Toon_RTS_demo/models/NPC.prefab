@@ -887,6 +887,8 @@ GameObject:
   - component: {fileID: 3740949248662930579}
   - component: {fileID: 5262249492569691378}
   - component: {fileID: 849755651004184858}
+  - component: {fileID: -7638399477172799057}
+  - component: {fileID: 156677122078691081}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -901,15 +903,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4867382718333921279}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.8467634, y: 1.7, z: 6.6738405}
+  m_LocalRotation: {x: -0.006229507, y: -0, z: -0, w: 0.9999806}
+  m_LocalPosition: {x: 14.05, y: 1.698129, z: 15.38701}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4867382718334024621}
   - {fileID: 4867382718334024601}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.71400005, y: 0, z: 0}
 --- !u!95 &4867382718343304269
 Animator:
   serializedVersion: 3
@@ -971,8 +973,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   safeDistance: 50
+  runController: {fileID: 9100000, guid: ab90de9bb203e894aa2e319047947eab, type: 2}
+  walkController: {fileID: 9100000, guid: 050ca9fda18216541bddaea5e841ce07, type: 2}
   navMeshAgent: {fileID: 849755651004184858}
-  timeForNewPath: 1
+  maxTimeForNewPath: 5
 --- !u!195 &849755651004184858
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -995,3 +999,33 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-7638399477172799057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4867382718333921279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c13a84733bf25424e8af39449fc39e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: -6411899549933469579, guid: 3dfea37f6cf926b4cacb225a9b0c6dd2,
+    type: 3}
+  npc: {fileID: 4867382718333921279}
+  arrowSpwan: {fileID: 0}
+  shootForce: 15
+--- !u!114 &156677122078691081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4867382718333921279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bed10138e432bd448b02768a2dc4ee1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initHealth: 200
