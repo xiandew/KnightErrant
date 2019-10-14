@@ -978,6 +978,8 @@ MonoBehaviour:
   npcWeaponController: {fileID: -7638399477172799057}
   navMeshAgent: {fileID: 849755651004184858}
   maxTimeForNewPath: 5
+  bloodSplashPrefab: {fileID: 6377375643447652060, guid: efcc8956775f4b44db0ceebc29d69f6c,
+    type: 3}
 --- !u!195 &849755651004184858
 NavMeshAgent:
   m_ObjectHideFlags: 0
