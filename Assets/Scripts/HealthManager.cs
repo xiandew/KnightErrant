@@ -7,7 +7,7 @@ public class HealthManager : MonoBehaviour {
 
     private int currHealth;
 
-    void start() {
+    void Start() {
         currHealth = initHealth;
     }
 
@@ -21,6 +21,10 @@ public class HealthManager : MonoBehaviour {
                 gameObject.GetComponent<PlayerController>().Lose();
             }
         }
+    }
+
+    public int GetCurrHealth() {
+        return currHealth;
     }
 
 }
