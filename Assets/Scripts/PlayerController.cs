@@ -4,110 +4,56 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // public float speed;
-    // public float sensitivity;
-    // private float yaw = 0.0f;
-    // private float pitch = 0.0f;
+    public float movementSpeed;
 
-    // void Start()
-    // {
-    //     // Initial orientation
-    //     this.transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
-    // }
-
-    // // Update is called once per frame
-    // void Update()
-    // {
-    //     // Update orientation
-    //     yaw += sensitivity * Input.GetAxis("Mouse X");
-    //     pitch -= sensitivity * Input.GetAxis("Mouse Y");
-
-    //     // Clamp pitch:
-    //     pitch = Mathf.Clamp(pitch, -90.0f, 90.0f);
-
-    //     // Wrap yaw:
-    //     while (yaw < 0.0f) {
-    //         yaw += 360.0f;
-    //     }
-    //     while (yaw >= 360.0f) {
-    //         yaw -= 360.0f;
-    //     }
-
-    //     this.transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
-
-    //     // The player moves left while key A is pressed.
-    //     if (Input.GetKey(KeyCode.A)) {
-    //         this.transform.Translate(Vector3.left * speed * Time.deltaTime);
-    //     }
-
-    //     // The player moves right while key D is pressed.
-    //     if (Input.GetKey(KeyCode.D)) {
-    //         this.transform.Translate(Vector3.right * speed * Time.deltaTime);
-    //     }
-
-    //     // The player moves forward while key W is pressed.
-    //     if (Input.GetKey(KeyCode.W)) {
-    //         this.transform.Translate(Vector3.forward * speed * Time.deltaTime);
-    //     }
-
-    //     // The player moves backward while key S is pressed.
-    //     if (Input.GetKey(KeyCode.S)) {
-    //         this.transform.Translate(Vector3.back * speed * Time.deltaTime);
-    //     }
-
-    // }
-
-    [SerializeField] private string horizontalInputName;
-    [SerializeField] private string verticalInputName;
-    [SerializeField] private float speed;
-
-    private CharacterController characterController;
-
-    [SerializeField] private AnimationCurve jumpFallOff;
-    [SerializeField] private float jumpMultiplier;
-    [SerializeField] private KeyCode JumpKey;
-
+    private CharacterController charController;
     private bool isJumping;
-    private void Awake(){
-        characterController = GetComponent<CharacterController>();
+    public AnimationCurve jumpFallOff;
+    public float jumpHeight;
 
+    void Start() {
+        charController = GetComponent<CharacterController>();
+        isJumping = false;
     }
 
-    void Update(){
-        move();
+    void Update() {
+        PlayerMovement();
     }
 
-    private void move(){
-        float horizInput = Input.GetAxis(horizontalInputName) * speed;
-        float vertInput = Input.GetAxis(verticalInputName) * speed;
+    private void PlayerMovement() {
+        float vertInput = Input.GetAxis("Vertical") * movementSpeed;
+        float horizInput = Input.GetAxis("Horizontal") * movementSpeed;
 
+        Vector3 vertMovement = transform.forward * vertInput;
+        Vector3 horizMovement = transform.right * horizInput;
 
-        Vector3 moveForward = transform.forward * vertInput;
-        Vector3 moveRight = transform.right * horizInput;
+        charController.SimpleMove(vertMovement + horizMovement);
 
-        characterController.SimpleMove(moveForward + moveRight);
-        JumpInput();
+        Jump();
     }
 
-    private void JumpInput(){
-        if(Input.GetKeyDown(JumpKey) && !isJumping){
+    private void Jump() {
+        if (Input.GetKeyDown("space") && !isJumping) {
             isJumping = true;
             StartCoroutine(JumpEvent());
         }
     }
 
     private IEnumerator JumpEvent() {
+        charController.slopeLimit = 90.0f;
         float timeInAir = 0.0f;
-        do{
-            float jumpForce = jumpFallOff.Evaluate(timeInAir);
-            characterController.Move(Vector3.up * jumpForce * jumpMultiplier * Time.deltaTime);
-            timeInAir += Time.deltaTime;
-            yield return null;
-        }while(!characterController.isGrounded && characterController.collisionFlags != CollisionFlags.Above);
 
+        do {
+            float jumpForce = jumpFallOff.Evaluate(timeInAir);
+            charController.Move(Vector3.up * jumpForce * jumpHeight * Time.deltaTime);
+            timeInAir += Time.deltaTime;
+
+            yield return null;
+        } while (!charController.isGrounded && charController.collisionFlags != CollisionFlags.Above);
+        
+        charController.slopeLimit = 45.0f;
         isJumping = false;
     }
-
     public void Die() {
         
     }
