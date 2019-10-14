@@ -28,7 +28,6 @@ public class ProjectileController : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        
         if (!onHit) {
             this.transform.rotation = Quaternion.LookRotation(projectileBody.velocity);
         }
@@ -42,23 +41,14 @@ public class ProjectileController : MonoBehaviour {
     // Handle collisions
     void OnCollisionEnter(Collision col) {
 
-        if (col.gameObject.tag != "Arrow") {
-            onHit = true;
-            Stick();
-        }
-
         if (col.gameObject.tag == tagToDamage)
         {
             // Damage object with relevant tag
             HealthManager healthManager = col.gameObject.GetComponent<HealthManager>();
             healthManager.ApplyDamage(damageAmount);
-
-            // Destroy self
-            Destroy(this.gameObject);
         }
-    }
 
-    private void Stick() {
-        projectileBody.constraints = RigidbodyConstraints.FreezeAll;
+        // Destroy self
+        Destroy(this.gameObject);
     }
 }
