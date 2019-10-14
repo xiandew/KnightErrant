@@ -14,17 +14,22 @@ public class NPCController : MonoBehaviour
     public GameObject bloodSplashPrefab;
     private bool inCoRoutine;
     private GameObject player;
+    private Camera playerCamera;
 
     // Start is called before the first frame update
     void Start()
     {
         navMeshAgent = this.gameObject.GetComponent<NavMeshAgent>();
         player = GameObject.FindWithTag("Player");
+        playerCamera = GameObject.FindWithTag("PlayerCamera").GetComponent<Camera>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        transform.Find("HealthCanvas").LookAt(
+            transform.position + playerCamera.transform.rotation * Vector3.back, playerCamera.transform.rotation * Vector3.down);
+
         Animator anim = gameObject.GetComponent<Animator>();
         if (Vector3.Distance(transform.position, player.transform.position) <= safeDistance && GetComponent<Renderer>().isVisible) {
             // chase the player
