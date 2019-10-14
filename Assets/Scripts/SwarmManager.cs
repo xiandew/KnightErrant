@@ -7,7 +7,10 @@ public class SwarmManager : MonoBehaviour {
     // External parameters/variables
     public Terrain gameMap;
     public GameObject enemyTemplate;
+    public GameObject bossTemplate;
     public int maxEnemyPerArea;
+    public GameObject bossArea;
+    public int numberOfBoss;
     public UnityEvent swarmDestroyedEvent;
     public bool swarmDestroyed = true;
     
@@ -32,12 +35,19 @@ public class SwarmManager : MonoBehaviour {
 
         foreach (Transform subarea in gameMap.transform) {
             // Create swarm of enemies in a grid formation
-            for (int i = 0; i < maxEnemyPerArea; i++) {
+            for (int i = 0; i < Random.Range(5, maxEnemyPerArea); i++) {
                     GameObject enemy = GameObject.Instantiate<GameObject>(enemyTemplate, subarea.transform.position, Quaternion.identity);
                     enemy.AddComponent<MeshRenderer>();
                     enemy.transform.parent = this.transform;
             }
         }
+
+        for (int i = 0; i < numberOfBoss; i ++) {
+            GameObject enemy = GameObject.Instantiate<GameObject>(bossTemplate, bossArea.transform.position, Quaternion.identity);
+            enemy.AddComponent<MeshRenderer>();
+            enemy.transform.parent = this.transform;
+        }
+
         this.swarmDestroyed = false;
     }
 }
