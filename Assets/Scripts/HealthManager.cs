@@ -17,6 +17,9 @@ public class HealthManager : MonoBehaviour {
             if (gameObject.tag == "Enemy") {
                 gameObject.GetComponent<NPCController>().Die();
             }
+            if (gameObject.tag == "Player") {
+                gameObject.GetComponent<PlayerController>().Lose();
+            }
         }
     }
 

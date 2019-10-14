@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -54,7 +55,9 @@ public class PlayerController : MonoBehaviour
         charController.slopeLimit = 45.0f;
         isJumping = false;
     }
-    public void Die() {
-        
+
+    public void Lose() {
+        Cursor.lockState = CursorLockMode.None;
+        SceneManager.LoadScene("Assets/Scenes/GameEnded.unity");
     }
 }
