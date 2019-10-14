@@ -973,8 +973,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   safeDistance: 50
-  runController: {fileID: 9100000, guid: ab90de9bb203e894aa2e319047947eab, type: 2}
   walkController: {fileID: 9100000, guid: 050ca9fda18216541bddaea5e841ce07, type: 2}
+  runController: {fileID: 9100000, guid: ab90de9bb203e894aa2e319047947eab, type: 2}
   npcWeaponController: {fileID: -7638399477172799057}
   navMeshAgent: {fileID: 849755651004184858}
   maxTimeForNewPath: 5
@@ -1014,7 +1014,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: -6411899549933469579, guid: 3dfea37f6cf926b4cacb225a9b0c6dd2,
     type: 3}
-  shootForce: 20
+  shootForce: 25
 --- !u!114 &156677122078691081
 MonoBehaviour:
   m_ObjectHideFlags: 0

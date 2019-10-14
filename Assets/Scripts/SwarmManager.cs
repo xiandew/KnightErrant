@@ -5,9 +5,9 @@ using UnityEngine.Events;
 public class SwarmManager : MonoBehaviour {
 
     // External parameters/variables
-    public Terrain land;
+    public Terrain gameMap;
     public GameObject enemyTemplate;
-    public int enemyNum;
+    public int maxEnemyPerArea;
     public UnityEvent swarmDestroyedEvent;
     public bool swarmDestroyed = true;
     
@@ -21,27 +21,22 @@ public class SwarmManager : MonoBehaviour {
 	void Update () {
 
         // Check if swarm destroyed, and trigger event if so
-        if (this.transform.childCount <= 0 && !this.swarmDestroyed)
-        {
+        if (this.transform.childCount <= 0 && !this.swarmDestroyed) {
             this.swarmDestroyedEvent.Invoke();
             this.swarmDestroyed = true;
         }
 	}
 
     // Method to automatically generate swarm of enemies based on the set public attributes
-    public void GenerateSwarm()
-    {
-        Vector3 min = land.terrainData.bounds.min;
-        Vector3 max = land.terrainData.bounds.max;
-        // Create swarm of enemies in a grid formation
-        for (int i = 0; i < enemyNum; i++)
-        {
-                GameObject enemy = GameObject.Instantiate<GameObject>(enemyTemplate);
-                float x = Random.Range(min.x, max.x);
-                float z = Random.Range(min.z, max.z);
+    public void GenerateSwarm() {
 
-                enemy.transform.parent = this.transform;
-                enemy.transform.position = new Vector3(x, Terrain.activeTerrain.SampleHeight(new Vector3(x, 0, z)), z);
+        foreach (Transform subarea in gameMap.transform) {
+            // Create swarm of enemies in a grid formation
+            for (int i = 0; i < maxEnemyPerArea; i++) {
+                    GameObject enemy = GameObject.Instantiate<GameObject>(enemyTemplate, subarea.transform.position, Quaternion.identity);
+                    enemy.AddComponent<MeshRenderer>();
+                    enemy.transform.parent = this.transform;
+            }
         }
         this.swarmDestroyed = false;
     }
