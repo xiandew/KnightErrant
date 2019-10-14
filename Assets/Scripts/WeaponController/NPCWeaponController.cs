@@ -3,21 +3,12 @@
 public class NPCWeaponController : MonoBehaviour {
 
     public ProjectileController projectilePrefab;
-    public GameObject npc;
-    public Transform arrowSpwan;
     public float shootForce;
-    private float timer = 0;
 
-    void Update() {
-        timer += Time.deltaTime;
-        if (timer < 0.25) {
-            Shoot();
-        }
-    }
+    public void Shoot(Vector3 dest) {
 
-    void Shoot() {
-        ProjectileController projectile = Instantiate<ProjectileController>(projectilePrefab, npc.transform.position, projectilePrefab.transform.rotation);
+        ProjectileController projectile = Instantiate<ProjectileController>(projectilePrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
-        // rb.velocity = npc.transform.forward * Random.Range(10, shootForce);
+        rb.velocity = transform.forward * 20;
     }
 }
