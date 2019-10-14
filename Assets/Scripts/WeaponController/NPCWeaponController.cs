@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using UnityEngine;
 
 public class NPCWeaponController : MonoBehaviour {
@@ -7,8 +7,11 @@ public class NPCWeaponController : MonoBehaviour {
 
     public void Shoot(GameObject player) {
         gameObject.transform.LookAt(player.transform);
-        ProjectileController projectile = Instantiate<ProjectileController>(projectilePrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+        ProjectileController projectile = Instantiate<ProjectileController>(
+            projectilePrefab,
+            gameObject.transform.position + new Vector3(0, (float)Math.Ceiling(gameObject.GetComponent<BoxCollider>().size.y), 0),
+            Quaternion.identity);
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
-        rb.velocity = transform.forward * shootForce;
+        rb.velocity = (player.transform.position - projectile.transform.position).normalized * shootForce;
     }
 }

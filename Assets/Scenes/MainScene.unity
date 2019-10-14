@@ -1041,7 +1041,11 @@ MonoBehaviour:
   gameMap: {fileID: 221499571}
   enemyTemplate: {fileID: 7402783721936841831, guid: 671d50721957e7943bcb483420d08522,
     type: 3}
-  maxEnemyPerArea: 5
+  bossTemplate: {fileID: 1304995637199344081, guid: f48eb76f9b8b77f499f8aeca85d2b92d,
+    type: 3}
+  maxEnemyPerArea: 15
+  bossArea: {fileID: 461670238}
+  numberOfBoss: 5
   swarmDestroyedEvent:
     m_PersistentCalls:
       m_Calls: []
