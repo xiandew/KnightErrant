@@ -11,6 +11,7 @@ public class NPCController : MonoBehaviour
     public NPCWeaponController npcWeaponController;
     public NavMeshAgent navMeshAgent;
     public float maxTimeForNewPath;
+    public GameObject bloodSplashPrefab;
     private bool inCoRoutine;
     private GameObject player;
 
@@ -66,6 +67,9 @@ public class NPCController : MonoBehaviour
     }
 
     public void Die() {
+        GameObject bloodSplash = Instantiate(bloodSplashPrefab);
+        bloodSplash.transform.position = this.transform.position;
+
         Destroy(this.gameObject);
     }
 }
