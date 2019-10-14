@@ -14,7 +14,9 @@ public class HealthManager : MonoBehaviour {
     public void ApplyDamage(int damage) {
         currHealth -= damage;
         if (currHealth <= 0) {
-            (gameObject.GetComponent<NPCController>() ?. gameObject.GetComponent<PlayerController>()).Die();
+            if (gameObject.tag == "Enemy") {
+                gameObject.GetComponent<NPCController>().Die();
+            }
         }
     }
 
