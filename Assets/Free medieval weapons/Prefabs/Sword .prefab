@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRange: 100
-  damageAmount: 5
+  damageAmount: 10
   tagToDamage: Player
 --- !u!65 &-3368508308828984921
 BoxCollider:
