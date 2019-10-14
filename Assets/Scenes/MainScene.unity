@@ -228,6 +228,7 @@ GameObject:
   - component: {fileID: 370829859}
   - component: {fileID: 370829861}
   - component: {fileID: 370829860}
+  - component: {fileID: 370829862}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: Untagged
@@ -300,6 +301,21 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &370829862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370829858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e32e14c705096004998c6b6b1c0ddc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseXInputName: Mouse X
+  mouseYInputName: Mouse Y
+  mouseSensitivity: 150
 --- !u!1001 &422182601
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -764,7 +780,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1428703819}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38f557e4eecdb2f41a3d0392985179b6, type: 3}
   m_Name: 
@@ -845,6 +861,7 @@ GameObject:
   - component: {fileID: 1890198643}
   - component: {fileID: 1890198642}
   - component: {fileID: 1890198647}
+  - component: {fileID: 1890198648}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -864,8 +881,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474fa3dafa073c74c96bcc0dfd42dc02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  sensitivity: 10
+  horizontalInputName: Horizontal
+  verticalInputName: Vertical
+  speed: 6
+  jumpFallOff:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  jumpMultiplier: 10
+  JumpKey: 32
 --- !u!136 &1890198643
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -957,6 +1001,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!143 &1890198648
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890198641}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2080207181 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1717406733745140, guid: d03c4353fda446d4f8df56d422578d64,

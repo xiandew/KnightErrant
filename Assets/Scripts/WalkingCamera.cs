@@ -11,6 +11,7 @@ using UnityEngine;
 public class WalkingCamera : MonoBehaviour
 {
 
+
     public Animation anim;
     private bool isMoving;
 
@@ -22,6 +23,8 @@ public class WalkingCamera : MonoBehaviour
         left = true;
         right = false;
     }
+
+ 
 
 
     void Update()
@@ -39,6 +42,14 @@ public class WalkingCamera : MonoBehaviour
 
         WalkingAnimation();
 
+    }
+
+
+
+    private void ClampXAxisRotationValue(float value){
+        Vector3 eulerRotaion = transform.eulerAngles;
+        eulerRotaion.x = value;
+        transform.eulerAngles = eulerRotaion;
     }
 
     void WalkingAnimation() {
