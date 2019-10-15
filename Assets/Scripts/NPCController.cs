@@ -46,6 +46,13 @@ public class NPCController : MonoBehaviour
                 StartCoroutine(wander());
             }
         }
+
+        // destroy played particle systems
+        foreach (GameObject p in GameObject.FindGameObjectsWithTag("BloodSplash")) {
+            if (!p.GetComponent<ParticleSystem>().IsAlive()) {
+                Destroy(p);
+            }
+        }
     }
 
     private IEnumerator runAndAttack() {

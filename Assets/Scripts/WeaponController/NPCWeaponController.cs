@@ -6,12 +6,13 @@ public class NPCWeaponController : MonoBehaviour {
     public float shootForce;
 
     public void Shoot(GameObject player) {
-        gameObject.transform.LookAt(player.transform);
+        transform.LookAt(player.transform);
         ProjectileController projectile = Instantiate<ProjectileController>(
             projectilePrefab,
-            gameObject.transform.position + new Vector3(0, (float)Math.Ceiling(gameObject.GetComponent<BoxCollider>().size.y), 0),
+            transform.Find("SwordSpawn").transform.position,
             Quaternion.identity);
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
-        rb.velocity = (player.transform.position - projectile.transform.position).normalized * shootForce;
+        Vector3 direction = (player.transform.position - projectile.transform.position).normalized;
+        rb.velocity = direction * shootForce;
     }
 }
