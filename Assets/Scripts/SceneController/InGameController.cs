@@ -11,6 +11,8 @@ public class InGameController : MonoBehaviour
     public SwarmManager swarmManager;
     public Text playerHealth;
 
+    public Slider healthBarSlider;
+
     private HealthManager playerHealthManager;
     
     // Start is called before the first frame update
@@ -23,16 +25,18 @@ public class InGameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerHealth.text = "" + playerHealthManager.GetCurrHealth();
+        healthBarSlider.maxValue = playerHealthManager.initHealth;
+        healthBarSlider.value = playerHealthManager.GetCurrHealth();
+        playerHealth.text = "Your Health: " + playerHealthManager.GetCurrHealth();
     }
 
-    public void GameOver()
+    public static void GameOver()
     {
         InGameController.lastGameWon = false;
         SceneManager.LoadScene("GameEnded");
     }
 
-    public void PlayerWon()
+    public static void PlayerWon()
     {
         InGameController.lastGameWon = true;
         SceneManager.LoadScene("GameEnded");

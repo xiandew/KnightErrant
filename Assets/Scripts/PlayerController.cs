@@ -58,6 +58,15 @@ public class PlayerController : MonoBehaviour
 
     public void Lose() {
         Cursor.lockState = CursorLockMode.None;
-        SceneManager.LoadScene("Assets/Scenes/GameEnded.unity");
+        InGameController.GameOver();
+    }
+
+    // Handle collisions
+    void OnTriggerEnter(Collider col) {
+        if (col.gameObject.tag == "Exit")
+        {
+            Cursor.lockState = CursorLockMode.None;
+            InGameController.PlayerWon();
+        }
     }
 }
