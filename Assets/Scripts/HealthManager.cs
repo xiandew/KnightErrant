@@ -1,13 +1,17 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour {
 
+  
     public int initHealth;
     private int currHealth;
     private RectTransform currHealthRect;
     private float healthBarWidth;
     private float healthBarHeight;
+
+
 
     void Start() {
         currHealth = initHealth;
