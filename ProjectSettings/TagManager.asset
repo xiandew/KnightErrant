@@ -8,6 +8,7 @@ TagManager:
   - Arrow
   - PlayerCamera
   - BloodSplash
+  - Exit
   layers:
   - Default
   - TransparentFX
