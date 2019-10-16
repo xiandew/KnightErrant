@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Arrow
   - PlayerCamera
+  - BloodSplash
   layers:
   - Default
   - TransparentFX
