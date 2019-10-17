@@ -9,6 +9,7 @@ TagManager:
   - PlayerCamera
   - BloodSplash
   - Exit
+  - River
   layers:
   - Default
   - TransparentFX
