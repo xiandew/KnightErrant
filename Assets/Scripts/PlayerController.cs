@@ -68,5 +68,11 @@ public class PlayerController : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             InGameController.PlayerWon();
         }
+
+         if (col.gameObject.tag == "River")
+        {
+            Cursor.lockState = CursorLockMode.None;
+            InGameController.GameOver();
+        }
     }
 }
