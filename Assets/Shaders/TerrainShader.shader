@@ -1,6 +1,8 @@
-﻿Shader "Unlit/TerrainShader"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Unlit/TerrianShader"
 {
-    Properties
+	Properties
 	{
 		_SunLightColor("Sun Light Color", Color) = (0, 0, 0)
 		_SunLightPosition("Sun Light Position", Vector) = (0.0, 0.0, 0.0)
