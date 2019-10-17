@@ -1,9 +1,14 @@
-﻿Shader "Unlit/TerrainShader"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Unlit/ExitShader"
 {
-    Properties
+	Properties
 	{
 		_SunLightColor("Sun Light Color", Color) = (0, 0, 0)
 		_SunLightPosition("Sun Light Position", Vector) = (0.0, 0.0, 0.0)
+		_MainTex("Main Texture", 2D) = "white" {}
 	}
 	SubShader
 	{
@@ -17,6 +22,7 @@
 
 			uniform float3 _SunLightColor;
 			uniform float3 _SunLightPosition;
+			sampler2D _MainTex;
 
 			struct vertIn
 			{
@@ -32,6 +38,8 @@
 				float4 worldVertex : TEXCOORD0;
 				float3 worldNormal : TEXCOORD1;
 			};
+
+			
 
 			// Implementation of the vertex shader
 			vertOut vert(vertIn v)
@@ -49,6 +57,8 @@
 				// in the fragment shader (and utilised)
 				o.worldVertex = worldVertex;
 				o.worldNormal = worldNormal;
+
+				o.vertex = UnityObjectToClipPos(v.vertex);
 
 				return o;
 			}
@@ -83,7 +93,7 @@
 				float4 returnColor = float4(0.0f, 0.0f, 0.0f, 0.0f);
 				returnColor.rgb = amb.rgb + dif.rgb + spe.rgb;
 				returnColor.a = v.color.a;
-
+				
 				return returnColor;
 			}
 			ENDCG
