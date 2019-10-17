@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private IEnumerator JumpEvent() {
-        charController.slopeLimit = 90.0f;
+        // charController.slopeLimit = .0f;
         float timeInAir = 0.0f;
 
         do {
