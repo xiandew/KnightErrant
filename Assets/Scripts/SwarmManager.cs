@@ -33,7 +33,7 @@ public class SwarmManager : MonoBehaviour {
     // Method to automatically generate swarm of enemies based on the set public attributes
     public void GenerateSwarm() {
 
-        foreach (Transform subarea in gameMap.transform) {
+        foreach (Transform subarea in gameMap.transform.Find("Area")) {
             // Create swarm of enemies in a grid formation
             for (int i = 0; i < Random.Range(5, maxEnemyPerArea); i++) {
                     GameObject enemy = GameObject.Instantiate<GameObject>(enemyTemplate, subarea.transform.position, Quaternion.identity);
