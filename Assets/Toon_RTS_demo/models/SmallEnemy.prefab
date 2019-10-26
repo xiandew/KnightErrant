@@ -1175,7 +1175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: -6411899549933469579, guid: 3dfea37f6cf926b4cacb225a9b0c6dd2,
     type: 3}
-  shootForce: 25
+  shootForce: 35
 --- !u!114 &2817902457161745553
 MonoBehaviour:
   m_ObjectHideFlags: 0
