@@ -36,7 +36,7 @@ public class SwarmManager : MonoBehaviour {
     public void GenerateSwarm() {
 
         foreach (Transform subarea in gameMap.transform.Find("Area")) {
-            if (subarea == bossEnemyOnlyArea.transform) {
+            if (bossEnemyOnlyArea && subarea == bossEnemyOnlyArea.transform) {
                 GameObject enemy = GameObject.Instantiate<GameObject>(bossEnemyTemplate, subarea.transform.position, Quaternion.identity);
                 enemy.AddComponent<MeshRenderer>();
                 enemy.transform.parent = this.transform;
@@ -50,7 +50,7 @@ public class SwarmManager : MonoBehaviour {
                     enemy.transform.parent = this.transform;
             }
 
-            if (subarea == smallEnemyOnlyArea.transform) {
+            if (smallEnemyOnlyArea && subarea == smallEnemyOnlyArea.transform) {
                 continue;
             }
 

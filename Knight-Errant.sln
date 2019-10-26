@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{F26440C3-4296-4513-CC86-F79C0F2FB7FD}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavMeshComponents", "NavMeshComponents.csproj", "{5DC40FE6-3480-10C7-646C-143EE1FAE274}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{F26440C3-4296-4513-CC86-F79C0F2FB7FD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavMeshComponentsEditor", "NavMeshComponentsEditor.csproj", "{A79B591A-643E-2327-FF44-A56DC14049A7}"
 EndProject
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F26440C3-4296-4513-CC86-F79C0F2FB7FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F26440C3-4296-4513-CC86-F79C0F2FB7FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F26440C3-4296-4513-CC86-F79C0F2FB7FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F26440C3-4296-4513-CC86-F79C0F2FB7FD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5DC40FE6-3480-10C7-646C-143EE1FAE274}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5DC40FE6-3480-10C7-646C-143EE1FAE274}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DC40FE6-3480-10C7-646C-143EE1FAE274}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DC40FE6-3480-10C7-646C-143EE1FAE274}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F26440C3-4296-4513-CC86-F79C0F2FB7FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F26440C3-4296-4513-CC86-F79C0F2FB7FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F26440C3-4296-4513-CC86-F79C0F2FB7FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F26440C3-4296-4513-CC86-F79C0F2FB7FD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A79B591A-643E-2327-FF44-A56DC14049A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A79B591A-643E-2327-FF44-A56DC14049A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A79B591A-643E-2327-FF44-A56DC14049A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
