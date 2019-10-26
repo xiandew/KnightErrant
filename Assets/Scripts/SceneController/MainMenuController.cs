@@ -12,9 +12,9 @@ public class MainMenuController : MonoBehaviour {
     }
 
     
-    public void OpenInstructions()
+    public void OpenTutorial()
     {
-        SceneManager.LoadScene("Instruction");
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void OpenOptions()
