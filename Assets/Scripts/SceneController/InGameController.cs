@@ -20,13 +20,17 @@ public class InGameController : MonoBehaviour
     {
         swarmManager.GenerateSwarm();
         playerHealthManager = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthManager>();
+        healthBarSlider.maxValue = playerHealthManager.initHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-        healthBarSlider.maxValue = playerHealthManager.initHealth;
-        healthBarSlider.value = playerHealthManager.GetCurrHealth();
+        int currHealth = playerHealthManager.GetCurrHealth();
+        if (currHealth > healthBarSlider.maxValue) {
+            healthBarSlider.maxValue = currHealth;
+        }
+        healthBarSlider.value = currHealth;
         playerHealth.text = "Your Health: " + playerHealthManager.GetCurrHealth();
     }
 
