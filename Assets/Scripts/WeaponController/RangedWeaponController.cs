@@ -4,13 +4,13 @@ public class RangedWeaponController : MonoBehaviour {
 
     public ProjectileController projectilePrefab;
     public Camera playerCam;
-    public Transform arrowSpwan;
+    public Transform arrowSpawn;
     public float shootForce;
 
     private Animator animator;
 
     void Start() {
-        animator = GetComponent<Animator>();
+        // animator = GetComponent<Animator>();
     }
 
     void Update() {
@@ -20,14 +20,14 @@ public class RangedWeaponController : MonoBehaviour {
             Shoot();
 
         }
+        print(arrowSpawn.position);
     }
 
     void Shoot() {
         // animator.SetTrigger("fire");
-        ProjectileController projectile = Instantiate(projectilePrefab, arrowSpwan.position, Quaternion.identity);
+        ProjectileController projectile = Instantiate(projectilePrefab, arrowSpawn.position, Quaternion.identity);
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         rb.velocity = playerCam.transform.forward * shootForce;
-
     }
 
 }
