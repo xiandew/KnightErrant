@@ -10,6 +10,7 @@ public class SwarmManager : MonoBehaviour {
     public GameObject bigEnemyTemplate;
     public GameObject bossEnemyTemplate;
     public int maxSmallEnemyPerArea;
+    public int minSmallEnemyPerArea = 15;
     public int maxBigEnemyPerArea;
     public GameObject smallEnemyOnlyArea;
     public GameObject bossEnemyOnlyArea;
@@ -36,7 +37,7 @@ public class SwarmManager : MonoBehaviour {
     public void GenerateSwarm() {
 
         foreach (Transform subarea in gameMap.transform.Find("Area")) {
-            if (subarea == bossEnemyOnlyArea.transform) {
+            if (bossEnemyOnlyArea && subarea == bossEnemyOnlyArea.transform) {
                 GameObject enemy = GameObject.Instantiate<GameObject>(bossEnemyTemplate, subarea.transform.position, Quaternion.identity);
                 enemy.AddComponent<MeshRenderer>();
                 enemy.transform.parent = this.transform;
@@ -44,13 +45,13 @@ public class SwarmManager : MonoBehaviour {
             }
 
             // Create swarm of enemies in a grid formation
-            for (int i = 0; i < Random.Range(15, maxSmallEnemyPerArea); i++) {
+            for (int i = 0; i < Random.Range(minSmallEnemyPerArea, maxSmallEnemyPerArea); i++) {
                     GameObject enemy = GameObject.Instantiate<GameObject>(smallEnemyTemplate, subarea.transform.position, Quaternion.identity);
                     enemy.AddComponent<MeshRenderer>();
                     enemy.transform.parent = this.transform;
             }
 
-            if (subarea == smallEnemyOnlyArea.transform) {
+            if (smallEnemyOnlyArea && subarea == smallEnemyOnlyArea.transform) {
                 continue;
             }
 

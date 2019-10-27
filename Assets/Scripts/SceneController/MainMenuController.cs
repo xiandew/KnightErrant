@@ -5,16 +5,15 @@ using UnityEngine.SceneManagement;
 public class MainMenuController : MonoBehaviour {
 
 
-
     public void StartGame()
     {
         SceneManager.LoadScene("MainScene");
     }
 
     
-    public void OpenInstructions()
+    public void OpenTutorial()
     {
-        SceneManager.LoadScene("Instruction");
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void OpenOptions()
