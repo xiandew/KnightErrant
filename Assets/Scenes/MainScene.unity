@@ -2162,6 +2162,7 @@ MonoBehaviour:
   bossEnemyTemplate: {fileID: 1419629611451474730, guid: e68dc705e3d3e364b97e7a0885b12902,
     type: 3}
   maxSmallEnemyPerArea: 25
+  minSmallEnemyPerArea: 15
   maxBigEnemyPerArea: 5
   smallEnemyOnlyArea: {fileID: 1263153498}
   bossEnemyOnlyArea: {fileID: 461670238}
@@ -2771,7 +2772,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 4386414857623804934, guid: 5187dfa4d8f19524e8bbf7c6894b7de7,
     type: 3}
   playerCam: {fileID: 370829861}
-  arrowSpwan: {fileID: 633764094}
+  arrowSpawn: {fileID: 633764094}
   shootForce: 50
 --- !u!1 &2112184169
 GameObject:

@@ -32,6 +32,10 @@ public class InstructionController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        HandleInstructions();
+    }
+
+    void HandleInstructions() {
         if (Input.GetKeyDown(KeyCode.Space)) {
             currentInstr++;
 
@@ -39,6 +43,7 @@ public class InstructionController : MonoBehaviour
                 gameInstruction.text = instructions[currentInstr].ToString();
             } 
             else {
+                gameInstruction.gameObject.SetActive(false);
                 tutorialEndPrompt.SetActive(true);
                 Cursor.lockState = CursorLockMode.None;
             }
