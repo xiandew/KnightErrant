@@ -2327,7 +2327,7 @@ MonoBehaviour:
     type: 3}
   bossEnemyTemplate: {fileID: 1419629611451474730, guid: e68dc705e3d3e364b97e7a0885b12902,
     type: 3}
-  maxSmallEnemyPerArea: 25
+  maxSmallEnemyPerArea: 20
   maxBigEnemyPerArea: 5
   smallEnemyOnlyArea: {fileID: 1263153498}
   bossEnemyOnlyArea: {fileID: 461670238}
