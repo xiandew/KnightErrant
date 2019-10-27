@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*
+    This PlayerController is based on a tutorial:
+    https://www.youtube.com/watch?v=n-KX8AeGK7E
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
