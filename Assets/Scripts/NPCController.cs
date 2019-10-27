@@ -12,6 +12,8 @@ public class NPCController : MonoBehaviour
     public NavMeshAgent navMeshAgent;
     public float maxTimeForNewPath;
     public GameObject bloodSplashPrefab;
+    public GameObject redBuffPrefab;
+    public int maxRedBuff;
     private bool inCoRoutine;
     private GameObject player;
     private Camera playerCamera;
@@ -81,6 +83,12 @@ public class NPCController : MonoBehaviour
     public void Die() {
         GameObject bloodSplash = Instantiate(bloodSplashPrefab);
         bloodSplash.transform.position = this.transform.position;
+
+        for (int n = 1; n < maxRedBuff; n++) {
+            GameObject redBuff = Instantiate(redBuffPrefab);
+            redBuff.transform.position =
+                new Vector3(this.transform.position.x + Random.Range(-1, 1), 26f, this.transform.position.z + Random.Range(-1, 1));
+        }
 
         Destroy(this.gameObject);
     }

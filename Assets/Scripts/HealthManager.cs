@@ -39,4 +39,7 @@ public class HealthManager : MonoBehaviour {
         return currHealth;
     }
 
+    public void SetCurrHealth(int currHealth) {
+        this.currHealth = currHealth;
+    }
 }
