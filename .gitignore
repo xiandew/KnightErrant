@@ -3,3 +3,4 @@ Temp
 Library
 obj/debug
 *.csproj
+*.sln
