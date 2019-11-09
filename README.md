@@ -2,7 +2,7 @@
 COMP30019 (Graphics and Interaction) project 2, summer 2019
 
 ## Demo
-[![](https://i9.ytimg.com/vi/Axmp8RUed1I/hqdefault.jpg?time=1573190060401&sqp=CKjxk-4F&rs=AOn4CLBTuk4Ay7mY7DlcON6TZiB6qIGGgw)](https://youtu.be/Axmp8RUed1I)
+[![](https://img.youtube.com/vi/Axmp8RUed1I/maxresdefault.jpg)](https://youtu.be/Axmp8RUed1I)
 
 ## Spec
 
