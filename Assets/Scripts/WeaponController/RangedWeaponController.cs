@@ -20,7 +20,6 @@ public class RangedWeaponController : MonoBehaviour {
             Shoot();
 
         }
-        print(arrowSpawn.position);
     }
 
     void Shoot() {
